@@ -14,37 +14,39 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet("/Pokey")
 public class Pokey extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     public Pokey() {
-        
+
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int delay = 5000;
-		
-		String delayString = request.getParameter("delay");
-		try {
-			if (delayString != null) {
-				delay = Integer.valueOf(delayString);
-			}
-		} catch (NumberFormatException e) {
-		}
-		
-		delay = (int)(Math.random()*delay);		
-		try {
-			Thread.sleep(delay);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-				
-		PrintWriter pw = response.getWriter();
-		pw.print("Slept for " + delay + " ms.");
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int delay = 5000;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+        String delayString = request.getParameter("delay");
+        try {
+            if (delayString != null) {
+                delay = Integer.valueOf(delayString);
+            }
+        } catch (NumberFormatException e) {
+        }
+
+        delay = (int) (Math.random() * delay);
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter pw = response.getWriter();
+        pw.print("Slept for " + delay + " ms.");
+
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

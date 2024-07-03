@@ -14,22 +14,24 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet("/Impatient")
 public class Impatient extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     public Impatient() {
-        
+
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.gc();
-		
-		PrintWriter pw = response.getWriter();
-		pw.print("Requested a GC");
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.gc();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+        PrintWriter pw = response.getWriter();
+        pw.print("Requested a GC");
+
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }
